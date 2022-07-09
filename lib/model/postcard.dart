@@ -26,13 +26,16 @@ class _PostCardState extends State<PostCard> {
             height: MediaQuery.of(context).size.height * 0.35,
             width: double.infinity,
             child: Image.network(
-              widget.snap['postUrl'].toString(),
+              widget.snap['photoUrl'],
               fit: BoxFit.cover,
             ),
           ),
           widget.snap['isVerified']
-              ? Icon(Icons.verified)
-              : Icon(Icons.coronavirus_sharp),
+              ? Icon(
+                  Icons.verified,
+                  color: Colors.blue[500],
+                )
+              : Icon(Icons.cancel_sharp, color: Colors.red),
         ],
       ),
     );

@@ -28,6 +28,7 @@ class _MapState extends State<Map> {
 
   // This function is triggered when the floating button is pressed
   void _loadCSV() async {
+    // print('i was here');
     final _rawData =
         await rootBundle.loadString("lib/assets/e-waste-clean.csv");
     List<List<dynamic>> _listData =
@@ -35,52 +36,57 @@ class _MapState extends State<Map> {
     // setState() {
     //   _data = _listData;
     // }
+
     _data = _listData;
+    print(_data);
+    // _data = _listData;
     addMarkers(_data);
-    setState(() {});
     // print(_listData.length);
   }
 
   Set<Marker> markerList = {};
 
-  void addMarkers(List<List<dynamic>> data) async {
-    for (int i = 1; i < data.length; i++) {
-      await convertPostal(data[i][5]);
-      print(lat);
-      print("_____");
-      print(lng);
-      markerList.add(Marker(
-        markerId: MarkerId(i.toString()),
-        position: LatLng(lat, lng), //position of marker
-        infoWindow: InfoWindow(
-          title: data[i][1], //'Marker Title Second ',
-          snippet: data[i][2],
-        ),
-        onTap: () {}, //show directions from user
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
-      ));
+  void addMarkers(List<List<dynamic>> _data) async {
+    for (int i = 1; i < _data.length; i++) {
+      // await convertPostal(_data[i][4].toString(), i);
+
+      if (_data[i].length >= 9) {
+        markerList.add(Marker(
+          markerId: MarkerId(i.toString()),
+          position: LatLng(_data[i][_data[i].length - 2],
+              _data[i][_data[i].length - 1]), //position of marker
+          infoWindow: InfoWindow(
+            title: _data[i][1], //'Marker Title Second ',
+            snippet: _data[i][2],
+          ),
+          onTap: () {}, //show directions from user
+          icon:
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+        ));
+      }
     }
-    print('testing loop');
     setState(() {});
   }
 
-  // late LatLng currLatLng;
-  late var lat;
-  late var lng;
+  Future<void> convertPostal(String postal, int index) async {
+    if (postal.length != 6) {
+      return;
+    }
 
-  Future<void> convertPostal(String postal) async {
     Response data = await get(
       Uri.parse(
+          // "https://developers.onemap.sg/commonapi/search?searchVal=637350&returnGeom=Y&getAddrDetails=N"),
           "https://developers.onemap.sg/commonapi/search?searchVal=$postal&returnGeom=Y&getAddrDetails=N"),
     );
     var locationData = jsonDecode(data.body);
+    // print(locationData);
     // currLatLng = LatLng(
-    lat = locationData["results"][0]["LATITUDE"];
-    lng = locationData["results"][0]["LONGITUDE"];
-    print('test');
-    print(lat);
-    print(lng);
-    // );
+    if (locationData["results"].length == 0) {
+      return;
+    }
+
+    _data[index].add(locationData["results"][0]["LATITUDE"]);
+    _data[index].add(locationData["results"][0]["LONGITUDE"]);
   }
 
   @override
@@ -90,6 +96,12 @@ class _MapState extends State<Map> {
         appBar: AppBar(
           title: const Text('Select a recycling bin'),
           backgroundColor: Colors.green[700],
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
         ),
         body: GoogleMap(
           onMapCreated: _onMapCreated,
@@ -104,8 +116,9 @@ class _MapState extends State<Map> {
           // myLocationButtonEnabled: true,
           // zoomControlsEnabled: true,
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
-          onPressed: () => _loadCSV,
+          onPressed: () => _loadCSV(),
           child: const Icon(Icons.add),
         ),
       ),

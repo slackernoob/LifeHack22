@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifehack_app/addpost.dart';
 import 'package:lifehack_app/csvtesting.dart';
+import 'package:lifehack_app/displayphotos.dart';
 import 'package:lifehack_app/home.dart';
 import 'package:lifehack_app/login.dart';
 import 'package:lifehack_app/map.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.purple,
       ),
-      home: Home(),
+      home: Login(),
     );
   }
 }
