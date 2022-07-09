@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "95925469489",
+    "firebase_url": "https://lifehack22environment-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "lifehack22environment",
+    "storage_bucket": "lifehack22environment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95925469489:android:06ec730e8944dae951f010",
+        "android_client_info": {
+          "package_name": "com.example.lifehack_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95925469489-seqeqth05i9hk82l5stusds4nd33if28.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpGkcmfkKekROISkDDNdu8OXrt7FZGodo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95925469489-seqeqth05i9hk82l5stusds4nd33if28.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
