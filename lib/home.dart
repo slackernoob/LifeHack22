@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.greenAccent[400],
+        backgroundColor: Colors.green[400],
         title: Text('Home'),
         centerTitle: true,
       ),
@@ -25,13 +25,14 @@ class _HomeState extends State<Home> {
         decoration: BoxDecoration(
           image: DecorationImage(
               colorFilter: ColorFilter.mode(
-                  Colors.white.withOpacity(0.8), BlendMode.modulate),
+                  Colors.white.withOpacity(1.0), BlendMode.modulate),
               image: AssetImage("lib/assets/E-Waste-Image.jpg"),
               fit: BoxFit.cover),
         ),
       ),
       floatingActionButton: SpeedDial(
         activeBackgroundColor: Colors.green[400],
+        backgroundColor: Colors.green[400],
         activeIcon: Icons.cancel,
         icon: Icons.more_vert,
         children: [

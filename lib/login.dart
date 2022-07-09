@@ -13,11 +13,11 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: _title,
       home: Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.greenAccent[400],
-            title: const Text(_title)),
+            backgroundColor: Colors.green[400], title: const Text(_title)),
         body: const LoginScreen(),
       ),
     );
@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
               print(passwordController.text);
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.greenAccent[400],
+              primary: Colors.green[400],
               // textStyle: const TextStyle(
               //   fontWeight: FontWeight.bold,
               // ),

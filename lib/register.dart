@@ -24,7 +24,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.greenAccent[400],
+          backgroundColor: Colors.green[400],
           title: const Text('Register to use the app'),
           centerTitle: true,
         ),

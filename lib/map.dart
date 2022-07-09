@@ -1,12 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart';
 
 import 'package:http/http.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class Map extends StatefulWidget {
   const Map({Key? key}) : super(key: key);
@@ -22,6 +24,7 @@ class _MapState extends State<Map> {
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
+    request();
   }
 
   List<List<dynamic>> _data = [];
@@ -92,10 +95,11 @@ class _MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Select a recycling bin'),
-          backgroundColor: Colors.green[700],
+          backgroundColor: Colors.green[400],
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -118,10 +122,23 @@ class _MapState extends State<Map> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.green[400],
           onPressed: () => _loadCSV(),
           child: const Icon(Icons.add),
         ),
       ),
     );
+  }
+
+  void request() async {
+    bool isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled();
+
+    await Geolocator.checkPermission();
+    await Geolocator.requestPermission();
+
+    // Ask permission from device
+    Future<void> requestPermission() async {
+      await Permission.location.request();
+    }
   }
 }
