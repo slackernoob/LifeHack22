@@ -19,26 +19,32 @@ class _csvState extends State<csv> {
         await rootBundle.loadString("lib/assets/e-waste-clean.csv");
     List<List<dynamic>> _listData =
         const CsvToListConverter().convert(_rawData);
-    setState(() {
+    setState() {
       _data = _listData;
-    });
-    print(_listData);
-    print(_listData[1][0]);
-    print(_listData[1][1]);
-    print(_listData[1][2]);
-    print(_listData[1][3]);
-    print(_listData[1][4]);
-    // for (int i = 0; i < _listData.length; i = i + 1) {
-    //   print(_data[i][0]);
-    //   print(_data[i][1]);
-    //   print(_data[i][2]);
-    //   print(_data[i][3]);
-    //   print(_data[i][4]);
-    //   print("______________");
-    // }
-    // print(_listData);
-    // print(_data[0][0].toString());
+    }
+
+    print(_listData.length);
+    // print(_listData[1][0]);
+    // print(_listData[1][1]);
+    // print(_listData[1][2]);
+    // print(_listData[1][3]);
+    // print(_listData[1][4]);
+    // for (int i = 0; i < _listData.length; i++) {
+    // print(_data[0][0]);
+    // print(_data[0][1]);
+    // print(_data[0][2]);
+    // print(_data[0][3]);
+    // print(_data[0][4]);
+    // print("______________");
+    // print(_data[1][0]);
+    // print(_data[1][1]);
+    // print(_data[1][2]);
+    // print(_data[1][3]);
+    // print(_data[1][4]);
+    // print("______________");
   }
+  // print(_listData);
+  // print(_data[0][0].toString());
 
   @override
   Widget build(BuildContext context) {
