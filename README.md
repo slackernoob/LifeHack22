@@ -1,14 +1,10 @@
 # WzSayEz
 
-## About the Project
-
-The WzSayEz app aims to provide Singaporeans greater flexibility in planning their destinations, by providing live parking availability data and routing from current location to selected carpark.
-
 ## Inspiration
 Many a time, many Singaporeans, just like us, do feel the urge to recycle and help the environment out. With so much help given to conventional recycling ways, recycling of **electronics** are often left out, or unknown to many.
 
 ## What it does
-App to allow users to recycle any items, with a map of **all** e-recycling bins integrated into it. Users are able to send in their photos/pictures to be stored in our database, and be awarded points when they are approved by the system administrators.
+The WzSayEz app aims to provide Singaporeans greater flexibility in recycling their items, with a map of **all** e-recycling bins integrated into it. Users are able to send in their photos/pictures to be stored in our database, and be awarded points when they are approved by the system administrators.
 
 ## How we built it
 Using Flutter, which is a cross-platform app development tool, we built the app with dart as the main programming language used.
