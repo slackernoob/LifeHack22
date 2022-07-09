@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lifehack_app/addpost.dart';
 import 'package:lifehack_app/displayphotos.dart';
 import 'package:lifehack_app/imageupload.dart';
 import 'package:lifehack_app/map.dart';

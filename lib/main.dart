@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lifehack_app/addpost.dart';
-import 'package:lifehack_app/csvtesting.dart';
 import 'package:lifehack_app/displayphotos.dart';
 import 'package:lifehack_app/home.dart';
 import 'package:lifehack_app/login.dart';
 import 'package:lifehack_app/map.dart';
-import 'package:lifehack_app/model/postcard.dart';
 import 'package:lifehack_app/testing.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';

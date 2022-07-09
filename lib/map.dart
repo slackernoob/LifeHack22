@@ -24,7 +24,6 @@ class _MapState extends State<Map> {
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
-    request();
   }
 
   List<List<dynamic>> _data = [];
@@ -116,29 +115,15 @@ class _MapState extends State<Map> {
           markers: markerList,
           mapType: MapType.satellite,
           myLocationEnabled: true,
-          // mapToolbarEnabled: true,
-          // myLocationButtonEnabled: true,
-          // zoomControlsEnabled: true,
+          zoomControlsEnabled: true,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.green[400],
           onPressed: () => _loadCSV(),
-          child: const Icon(Icons.add),
+          child: const Icon(Icons.gps_fixed),
         ),
       ),
     );
-  }
-
-  void request() async {
-    bool isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled();
-
-    await Geolocator.checkPermission();
-    await Geolocator.requestPermission();
-
-    // Ask permission from device
-    Future<void> requestPermission() async {
-      await Permission.location.request();
-    }
   }
 }
